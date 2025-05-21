@@ -1,4 +1,4 @@
-package cl.duocuc.MicroServicioSucursal.model;
+package cl.duocuc.MicroServicioSucursal.modelo;
 
 
 import jakarta.persistence.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="inventario")
+@Table(name="Sucursal")
 
 public class ModelSucursal {
     @Id
@@ -28,5 +28,9 @@ public class ModelSucursal {
     @OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL)
 
     private List<ModelInventario> inventario;
+
+    @OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL)
+
+    private List<ModelEmpleado> empleados;
 
 }

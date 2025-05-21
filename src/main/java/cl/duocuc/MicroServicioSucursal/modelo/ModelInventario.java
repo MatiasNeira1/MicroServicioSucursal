@@ -1,4 +1,4 @@
-package cl.duocuc.MicroServicioSucursal.model;
+package cl.duocuc.MicroServicioSucursal.modelo;
 
 
 import jakarta.persistence.*;
