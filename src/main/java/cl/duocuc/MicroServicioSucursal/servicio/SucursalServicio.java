@@ -31,7 +31,7 @@ public class SucursalServicio {
     }
 
 
-    public List<ModelSucursal> deleteUser(Long id){
+    public List<ModelSucursal> deleteSucursal(Long id){
         if(sucursalrepository.existsById(id)){
             sucursalrepository.deleteById(id);
         }
@@ -42,7 +42,7 @@ public class SucursalServicio {
 
 
     public  ModelSucursal updateSucursal(Long id,ModelSucursal udaptesucursal){
-        return sucursalrepository.findById(id).map(sucursal -> {;
+        return sucursalrepository.findById(id).map(sucursal -> {
             sucursal.setNombre(udaptesucursal.getNombre());
             sucursal.setDireccion(udaptesucursal.getDireccion());
             sucursal.setCiudad(udaptesucursal.getCiudad());
@@ -50,7 +50,7 @@ public class SucursalServicio {
             sucursal.setHorario_apertura(udaptesucursal.getHorario_apertura());
             sucursal.setHorario_cierre(udaptesucursal.getHorario_cierre());
             return sucursalrepository.save(sucursal);
-        }).orElse(null);
+        }).orElseThrow(() -> new RuntimeException("Sucursal no encontrada"));
 
 
     }

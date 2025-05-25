@@ -16,7 +16,8 @@ import java.util.List;
 
 public class ModelSucursal {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sucursal_seq")
+    @SequenceGenerator(name = "sucursal_seq", sequenceName = "SEQ_SUCURSAL", allocationSize = 1)
     private long id;
     private String nombre;
     private String direccion;
