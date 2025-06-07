@@ -12,7 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="producto")
 public class ModelProducto {
+
      @Id
+     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_seq")
+     @SequenceGenerator(name = "producto_seq", sequenceName = "PRODUCTO_SEQ", allocationSize = 1)
      private long id;
      private String nombre;
      private String descripcion;
@@ -22,7 +25,7 @@ public class ModelProducto {
 
      @ManyToOne
      @JoinColumn(name="id_inventario")
-
+     @JsonIgnoreProperties("productos")
         private ModelInventario inventario;
 
 
