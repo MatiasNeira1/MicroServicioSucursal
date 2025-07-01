@@ -2,6 +2,7 @@ package cl.duocuc.MicroServicioSucursal.modelo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class ModelInventario {
     @ManyToOne
     @JoinColumn(name="id_sucursal")
     @JsonIgnoreProperties({"inventario", "empleados"})
+    @JsonManagedReference
     private ModelSucursal sucursal;
 
     @OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)

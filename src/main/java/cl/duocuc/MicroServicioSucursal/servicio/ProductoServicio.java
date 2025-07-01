@@ -8,6 +8,8 @@ import cl.duocuc.MicroServicioSucursal.repositorio.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductoServicio {
 
@@ -24,5 +26,32 @@ public class ProductoServicio {
         producto.setInventario(inventario); // 💡
 
         return productoRepository.save(producto);
+    }
+
+    public List<ModelProducto> obtenertodosproductos(){
+        return productoRepository.findAll();
+    }
+
+    public ModelProducto obtenerProductoPorId(Long id) {
+        return productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
+
+    public ModelProducto actualizarProducto(Long id, ModelProducto producto) {
+        ModelProducto productoExistente = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        // Actualizar los campos del producto existente
+        productoExistente.setNombre(producto.getNombre());
+        productoExistente.setPrecio(producto.getPrecio());
+        // Agregar más campos según sea necesario
+
+        return productoRepository.save(productoExistente);
+    }
+
+    public void eliminarProducto(Long id) {
+        ModelProducto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        productoRepository.delete(producto);
     }
 }

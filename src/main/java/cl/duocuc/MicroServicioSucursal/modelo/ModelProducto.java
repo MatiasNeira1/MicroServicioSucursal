@@ -1,5 +1,6 @@
 package cl.duocuc.MicroServicioSucursal.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class ModelProducto {
      @ManyToOne
      @JoinColumn(name="id_inventario")
      @JsonIgnoreProperties("productos")
+     @JsonBackReference
+
         private ModelInventario inventario;
 
 
