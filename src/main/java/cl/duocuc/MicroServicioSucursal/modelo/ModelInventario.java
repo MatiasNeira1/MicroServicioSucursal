@@ -25,13 +25,17 @@ public class ModelInventario {
     private String nombre;
     private String descripcion;
 
+
+
+
     @ManyToOne
     @JoinColumn(name="id_sucursal")
     @JsonIgnoreProperties({"inventario", "empleados"})
-    @JsonManagedReference
+
     private ModelSucursal sucursal;
 
     @OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ModelProducto> productos;
 
 }

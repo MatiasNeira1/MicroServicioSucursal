@@ -3,7 +3,6 @@ package cl.duocuc.MicroServicioSucursal.servicio;
 
 
 import cl.duocuc.MicroServicioSucursal.modelo.ModelSucursal;
-import cl.duocuc.MicroServicioSucursal.repositorio.EmpleadoRepository;
 import cl.duocuc.MicroServicioSucursal.repositorio.SucursalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

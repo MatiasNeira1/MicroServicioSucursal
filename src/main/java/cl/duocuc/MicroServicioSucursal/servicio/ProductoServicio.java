@@ -41,10 +41,10 @@ public class ProductoServicio {
         ModelProducto productoExistente = productoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
-        // Actualizar los campos del producto existente
+
         productoExistente.setNombre(producto.getNombre());
         productoExistente.setPrecio(producto.getPrecio());
-        // Agregar más campos según sea necesario
+
 
         return productoRepository.save(productoExistente);
     }

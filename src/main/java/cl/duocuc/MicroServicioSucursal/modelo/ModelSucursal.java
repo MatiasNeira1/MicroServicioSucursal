@@ -1,6 +1,7 @@
 package cl.duocuc.MicroServicioSucursal.modelo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,11 +28,9 @@ public class ModelSucursal {
     private String horario_cierre;
 
     @OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL)
-
+    @JsonIgnoreProperties("sucursal")
     private List<ModelInventario> inventario;
 
-    @OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL)
 
-    private List<ModelEmpleado> empleados;
 
 }

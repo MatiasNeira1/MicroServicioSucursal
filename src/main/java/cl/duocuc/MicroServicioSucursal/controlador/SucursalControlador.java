@@ -20,7 +20,7 @@ public class SucursalControlador {
     @Autowired
     private SucursalServicio sucursalservicio;
 
-   @PostMapping("/create")
+   @PostMapping("/crear")
     public ResponseEntity<ModelSucursal> createSucursal(@RequestBody ModelSucursal sucursal){
 
        try{
@@ -33,7 +33,7 @@ public class SucursalControlador {
        }
 
    }
-    @GetMapping("/todassucursales")
+    @GetMapping("/todas")
     public ResponseEntity<List<ModelSucursal>>todasSucursales(){
        try{
           List<ModelSucursal> sucursales_encontradas=sucursalservicio.getAll();
@@ -45,7 +45,7 @@ public class SucursalControlador {
 
     }
 
-    @GetMapping("/sucursal/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ModelSucursal> SucursalById(@PathVariable Long id) {
         try {
             Optional<ModelSucursal> sucursalEncontrada = sucursalservicio.findbyId(id);
@@ -75,7 +75,7 @@ public class SucursalControlador {
     }
 
 
-    @PutMapping("/sucursal/{id}")
+    @PutMapping("/actualizar/{id}")
     public ResponseEntity<ModelSucursal> updateSucursal(@PathVariable Long id, @RequestBody ModelSucursal sucursal){
 
        try{

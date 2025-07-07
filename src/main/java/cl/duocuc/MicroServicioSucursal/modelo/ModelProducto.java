@@ -29,7 +29,7 @@ public class ModelProducto {
      @JsonIgnoreProperties("productos")
      @JsonBackReference
 
-        private ModelInventario inventario;
+     private ModelInventario inventario;
 
 
 

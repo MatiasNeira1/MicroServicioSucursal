@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/inventario")
+@RequestMapping("/inventarios")
 public class InventarioControlador {
 
     @Autowired
     private InventarioServicio inventarioservice;
 
 
-    @PostMapping("/create")
+    @PostMapping("/crear")
     public ResponseEntity<ModelInventario> createInventario(@RequestBody ModelInventario inventario) {
         try{
            ModelInventario inventario_creado = inventarioservice.createInventario(inventario);
@@ -32,7 +32,7 @@ public class InventarioControlador {
         }
     }
 
-    @GetMapping("/inventarios")
+    @GetMapping("/todos")
     public ResponseEntity<List<ModelInventario>>obtenerTodosLosInventarios() {
         try {
            List<ModelInventario> inventario = inventarioservice.obtenerTodosLosInventarios();

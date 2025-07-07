@@ -18,14 +18,17 @@ public class InventarioServicio {
     @Autowired
     private SucursalRepository sucursalRepository;
 
-    public  ModelInventario createInventario(ModelInventario inventario){
-        if(sucursalRepository.existsById(inventario.getSucursal().getId())){
-            return inventariorepository.save(inventario);
+    public ModelInventario createInventario(ModelInventario inventario) {
+        Long idSucursal = inventario.getSucursal().getId();
 
-        }else{
-            throw new RuntimeException("Sucursal no existe");
-        }
+        ModelSucursal sucursal = sucursalRepository.findById(idSucursal)
+                .orElseThrow(() -> new RuntimeException("La sucursal no existe"));
+
+        inventario.setSucursal(sucursal); //
+
+        return inventariorepository.save(inventario);
     }
+
 
     //public ResponseEntity<ModelInventario> obtenerInventario(@PathVariable Long id) {
        // ModelInventario inventario = inventariorepository.findById(id)
